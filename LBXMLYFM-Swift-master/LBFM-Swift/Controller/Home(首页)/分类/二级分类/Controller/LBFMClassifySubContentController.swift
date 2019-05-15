@@ -86,6 +86,7 @@ extension LBFMClassifySubContentController: UICollectionViewDelegate, UICollecti
         albumId = self.classifyVerticallist?[indexPath.row].albumId ?? 0
         trackUid = self.classifyVerticallist?[indexPath.row].trackId ?? 0
         uid = self.classifyVerticallist?[indexPath.row].uid ?? 0
+        currentProgress = 0
         let vc = LBFMNavigationController.init(rootViewController: LBFMPlayController(albumId:albumId, trackUid:trackUid, uid:uid))
         self.present(vc, animated: true, completion: nil)
     }

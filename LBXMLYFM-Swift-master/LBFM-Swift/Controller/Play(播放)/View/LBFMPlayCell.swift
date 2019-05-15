@@ -8,7 +8,7 @@
 
 import UIKit
 import StreamingKit
-
+var currentProgress = Float(0)
 class LBFMPlayCell: UICollectionViewCell {
     var playUrl:String?
     var timer: Timer?
@@ -117,6 +117,14 @@ class LBFMPlayCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpUI()
+        if currentProgress == 0{
+            removeTimer()
+            self.audioPlayer.stop()
+        }else{
+            slider.value = currentProgress
+            audioPlayer.seek(toTime: Double(currentProgress * Float(self.audioPlayer.duration)))
+            playBtn.isSelected = true
+        }
     }
     
     
@@ -258,6 +266,7 @@ class LBFMPlayCell: UICollectionViewCell {
                     starTimer()
                     isFirstPlay = false
                 }else{
+                    
                     self.audioPlayer.play(URL(string: "http://fdfs.xmcdn.com/group49/M0A/19/DA/wKgKl1vtT_fijTYLACWO1-PlGjM861.mp3")!)
                     starTimer()
                     isFirstPlay = false
@@ -298,6 +307,7 @@ extension LBFMPlayCell{
         self.currentTime.text = getMMSSFromSS(duration: currentTime)
         let progress = Float(self.audioPlayer.progress / self.audioPlayer.duration)
         slider.value = progress
+        
     }
     @objc func change(slider:UISlider) {
         print("slider.value = %d",slider.value)

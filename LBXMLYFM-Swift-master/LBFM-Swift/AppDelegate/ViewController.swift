@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         tabBarController.didHijackHandler = {
             [weak tabBarController] tabbarController, viewController, index in
             let vc = LBFMNavigationController.init(rootViewController: LBFMPlayController(albumId:albumId, trackUid:trackUid, uid:uid))
-            self.present(vc, animated: true, completion: nil)
+            UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true)
             //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             //                let warning = MessageView.viewFromNib(layout: .cardView)
             //                warning.configureTheme(.warning)
