@@ -18,10 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // 1.加载tabbar样式
-        let tabbar = self.setupTabBarStyle(delegate: self as? UITabBarControllerDelegate)
-        self.window?.backgroundColor = UIColor.white
-        self.window?.rootViewController = tabbar
-        self.window?.makeKeyAndVisible()
+//        let tabbar = self.setupTabBarStyle(delegate: self as? UITabBarControllerDelegate)
+//        self.window?.backgroundColor = UIColor.white
+//        self.window?.rootViewController = tabbar
+//        self.window?.makeKeyAndVisible()
         
         return true
     }
