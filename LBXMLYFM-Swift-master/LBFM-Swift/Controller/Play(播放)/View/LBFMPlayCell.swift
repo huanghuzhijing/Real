@@ -117,10 +117,12 @@ class LBFMPlayCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpUI()
+        audioPlayer.delegate = self
         if currentProgress == 0{
             removeTimer()
             self.audioPlayer.stop()
         }else{
+            starTimer()
             slider.value = currentProgress
             audioPlayer.seek(toTime: Double(currentProgress * Float(self.audioPlayer.duration)))
             playBtn.isSelected = true
@@ -307,7 +309,7 @@ extension LBFMPlayCell{
         self.currentTime.text = getMMSSFromSS(duration: currentTime)
         let progress = Float(self.audioPlayer.progress / self.audioPlayer.duration)
         slider.value = progress
-        
+        currentProgress = progress
     }
     @objc func change(slider:UISlider) {
         print("slider.value = %d",slider.value)
