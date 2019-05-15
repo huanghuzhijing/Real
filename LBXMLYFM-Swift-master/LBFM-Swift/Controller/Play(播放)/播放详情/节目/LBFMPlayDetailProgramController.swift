@@ -61,6 +61,7 @@ extension LBFMPlayDetailProgramController : UITableViewDelegate, UITableViewData
          albumId = self.playDetailTracks?.list?[indexPath.row].albumId ?? 0
          trackUid = self.playDetailTracks?.list?[indexPath.row].trackId ?? 0
          uid = self.playDetailTracks?.list?[indexPath.row].uid ?? 0
+        currentProgress = 0
         let vc = LBFMNavigationController.init(rootViewController: LBFMPlayController(albumId:albumId, trackUid:trackUid, uid:uid))
         self.present(vc, animated: true, completion: nil)
     }
