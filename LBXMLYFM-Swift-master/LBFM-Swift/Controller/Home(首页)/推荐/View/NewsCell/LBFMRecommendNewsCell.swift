@@ -52,20 +52,21 @@ class LBFMRecommendNewsCell: UICollectionViewCell {
         super.init(frame: frame)
         setupLayout()
         // 开启定时器
-        starTimer() 
+        starTimer()
+        
     }
     
     func setupLayout(){
         self.addSubview(self.imageView)
         self.imageView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(20)
             make.width.equalTo(60)
             make.height.equalTo(25)
             make.top.equalTo(10)
         }
         self.addSubview(self.moreBtn)
         self.moreBtn.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().offset(-5)
+            make.right.equalToSuperview().offset(-15)
             make.width.equalTo(60)
             make.height.equalTo(40)
             make.top.equalTo(5)

@@ -31,7 +31,7 @@ class LBFMMineHeaderView: UIView {
     // 昵称
     private lazy var nickName:UILabel = {
         let label = UILabel()
-        label.text = "JCSON先生"
+        label.text = "游客17943"
         return label
     }()
     
@@ -184,6 +184,7 @@ class LBFMMineHeaderView: UIView {
             })
             button.tag = index
             button.addTarget(self, action: #selector(gridBtnClick(button:)), for: UIControlEvents.touchUpInside)
+//            setAnimationViewAnimation()
         }
     }
     

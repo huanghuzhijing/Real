@@ -40,6 +40,9 @@ extension LBFMRecommendViewModel {
                 if let mappedObject = JSONDeserializer<LBFMHomeRecommendModel>.deserializeFrom(json: json.description) { // 从字符串转换为对象实例
                     self.fmhomeRecommendModel = mappedObject
                     self.homeRecommendList = mappedObject.list
+                    self.homeRecommendList = self.homeRecommendList!.filter{
+                        $0.list!.count > 0 && !($0.moduleType?.elementsEqual("live"))!
+                    }
                     if let recommendList = JSONDeserializer<LBFMRecommendListModel>.deserializeModelArrayFrom(json: json["list"].description) {
                         self.recommendList = recommendList as? [LBFMRecommendListModel]
                     }
@@ -120,7 +123,7 @@ extension LBFMRecommendViewModel {
         if moduleType == "focus" || moduleType == "square" || moduleType == "topBuzz" || moduleType == "ad" || section == 18 {
             return CGSize.zero
         }else {
-            return CGSize.init(width: LBFMScreenHeight, height:40)
+            return CGSize.init(width: LBFMScreenWidth - 20, height:40)
         }
     }
     
@@ -128,9 +131,9 @@ extension LBFMRecommendViewModel {
     func referenceSizeForFooterInSection(section: Int) -> CGSize {
         let moduleType = self.homeRecommendList?[section].moduleType
         if moduleType == "focus" || moduleType == "square" {
-            return CGSize.init(width: LBFMScreenWidth, height: 5.0)
+            return CGSize.init(width: LBFMScreenWidth  - 20, height: 5.0)
         }else {
-            return CGSize.init(width: LBFMScreenWidth, height: 10.0)
+            return CGSize.init(width: LBFMScreenWidth  - 20, height: 10.0)
         }
     }
 }

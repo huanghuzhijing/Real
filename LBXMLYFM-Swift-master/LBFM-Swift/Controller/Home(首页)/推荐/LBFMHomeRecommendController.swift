@@ -54,7 +54,8 @@ class LBFMHomeRecommendController: UIViewController {
         let collection = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
         collection.delegate = self
         collection.dataSource = self
-        collection.backgroundColor = .white
+        collection.backgroundColor = LBFMDownColor
+        
         // - 注册头视图和尾视图
         collection.register(LBFMRecommendHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: LBFMRecommendHeaderViewID)
         collection.register(LBFMRecommendFooterView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: LBFMRecommendFooterViewID)
@@ -180,12 +181,28 @@ extension LBFMHomeRecommendController: UICollectionViewDelegateFlowLayout, UICol
             let cell:LBFMRecommendGuessLikeCell = collectionView.dequeueReusableCell(withReuseIdentifier: LBFMRecommendGuessLikeCellID, for: indexPath) as! LBFMRecommendGuessLikeCell
             cell.delegate = self
             cell.recommendListData = viewModel.homeRecommendList?[indexPath.section].list
+            let bounds = cell.bounds
+            let cornerRadius:CGFloat = 15.0
+            let shapeLayer = CAShapeLayer()
+            let bezierPath = UIBezierPath(roundedRect: bounds,
+                                          byRoundingCorners: [.bottomLeft,.bottomRight],
+                                          cornerRadii: CGSize(width: cornerRadius,height: cornerRadius))
+            shapeLayer.path = bezierPath.cgPath
+            cell.layer.mask = shapeLayer
             return cell
         }else if moduleType == "categoriesForShort" || moduleType == "playlist" || moduleType == "categoriesForExplore"{
-            // 竖式排列布局cell
+            // 竖式排列布局cell microLession
             let cell:LBFMHotAudiobookCell = collectionView.dequeueReusableCell(withReuseIdentifier: LBFMHotAudiobookCellID, for: indexPath) as! LBFMHotAudiobookCell
             cell.delegate = self
             cell.recommendListData = viewModel.homeRecommendList?[indexPath.section].list
+            let bounds = cell.bounds
+            let cornerRadius:CGFloat = 15.0
+            let shapeLayer = CAShapeLayer()
+            let bezierPath = UIBezierPath(roundedRect: bounds,
+                                          byRoundingCorners: [.bottomLeft,.bottomRight],
+                                          cornerRadii: CGSize(width: cornerRadius,height: cornerRadius))
+                shapeLayer.path = bezierPath.cgPath
+                cell.layer.mask = shapeLayer
             return cell
         }else if moduleType == "ad" {
             let cell:LBFMAdvertCell = collectionView.dequeueReusableCell(withReuseIdentifier: LBFMAdvertCellID, for: indexPath) as! LBFMAdvertCell
@@ -196,14 +213,38 @@ extension LBFMHomeRecommendController: UICollectionViewDelegateFlowLayout, UICol
             // }else if indexPath.section == 17 {
             // cell.adModel = self.recommnedAdvertList?[2]
             }
+            let bounds = cell.bounds
+            let cornerRadius:CGFloat = 15.0
+            let shapeLayer = CAShapeLayer()
+            let bezierPath = UIBezierPath(roundedRect: bounds,
+                                          byRoundingCorners: [.bottomLeft,.bottomRight],
+                                          cornerRadii: CGSize(width: cornerRadius,height: cornerRadius))
+            shapeLayer.path = bezierPath.cgPath
+            cell.layer.mask = shapeLayer
             return cell
         }else if moduleType == "oneKeyListen" {
             let cell:LBFMOneKeyListenCell = collectionView.dequeueReusableCell(withReuseIdentifier: LBFMOneKeyListenCellID, for: indexPath) as! LBFMOneKeyListenCell
             cell.oneKeyListenList = viewModel.oneKeyListenList
+            let bounds = cell.bounds
+            let cornerRadius:CGFloat = 15.0
+            let shapeLayer = CAShapeLayer()
+            let bezierPath = UIBezierPath(roundedRect: bounds,
+                                          byRoundingCorners: [.bottomLeft,.bottomRight],
+                                          cornerRadii: CGSize(width: cornerRadius,height: cornerRadius))
+            shapeLayer.path = bezierPath.cgPath
+            cell.layer.mask = shapeLayer
             return cell
         }else if moduleType == "live" {
             let cell:LBFMHomeRecommendLiveCell = collectionView.dequeueReusableCell(withReuseIdentifier: LBFMHomeRecommendLiveCellID, for: indexPath) as! LBFMHomeRecommendLiveCell
             cell.liveList = viewModel.liveList
+            let bounds = cell.bounds
+            let cornerRadius:CGFloat = 15.0
+            let shapeLayer = CAShapeLayer()
+            let bezierPath = UIBezierPath(roundedRect: bounds,
+                                          byRoundingCorners: [.bottomLeft,.bottomRight],
+                                          cornerRadii: CGSize(width: cornerRadius,height: cornerRadius))
+            shapeLayer.path = bezierPath.cgPath
+            cell.layer.mask = shapeLayer
             return cell
         }else {
             let cell:LBFMRecommendForYouCell = collectionView.dequeueReusableCell(withReuseIdentifier: LBFMRecommendForYouCellID, for: indexPath) as! LBFMRecommendForYouCell

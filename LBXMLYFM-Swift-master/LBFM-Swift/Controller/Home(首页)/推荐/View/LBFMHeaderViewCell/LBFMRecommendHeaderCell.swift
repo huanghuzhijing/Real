@@ -46,7 +46,7 @@ class LBFMRecommendHeaderCell: UICollectionViewCell {
         let collectionView = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = .white
         collectionView.register(LBFMRecommendGridCell.self, forCellWithReuseIdentifier: "LBFMRecommendGridCell")
         collectionView.register(LBFMRecommendNewsCell.self, forCellWithReuseIdentifier: "LBFMRecommendNewsCell")
         return collectionView
@@ -60,7 +60,7 @@ class LBFMRecommendHeaderCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         /// 设置布局
-        
+        backgroundColor = UIColor.white
         self.blurImageView = UIImageView.init(frame:  CGRect(x:0 , y: -200 , width: LBFMScreenWidth, height: 400))
         
         self.blurImageView.image = UIImage(named: "1")
@@ -80,14 +80,26 @@ class LBFMRecommendHeaderCell: UICollectionViewCell {
             make.top.equalToSuperview().offset(0)
             make.right.equalToSuperview().offset(-30)
             make.left.equalToSuperview().offset(30)
-            make.height.equalTo(170)
+            make.height.equalTo(180)
         }
+        let bv = UIView()
+        self.addSubview(bv)
+        bv.backgroundColor = LBFMDownColor
+        gridView.layer.cornerRadius = 25
         // 九宫格
         self.addSubview(self.gridView)
-        self.gridView.snp.makeConstraints { (make) in
+        
+        
+        bv.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.pagerView.snp.bottom)
-            make.height.equalTo(210)
+            make.height.equalTo(130)
+        }
+        self.gridView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+            make.top.equalTo(self.pagerView.snp.bottom).offset(-10)
+            make.height.equalTo(130)
         }
         self.pagerView.itemSize = CGSize.init(width: LBFMScreenWidth - 120, height: 140)
     }
@@ -171,7 +183,7 @@ extension LBFMRecommendHeaderCell: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0{
-            return CGSize.init(width: (LBFMScreenWidth - 5)/5, height:80)
+            return CGSize.init(width: (LBFMScreenWidth - 25)/5, height:80)
         }else {
             return CGSize.init(width: LBFMScreenWidth, height: 50)
         }

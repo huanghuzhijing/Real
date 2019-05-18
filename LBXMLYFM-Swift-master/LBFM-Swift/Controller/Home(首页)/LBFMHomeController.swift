@@ -41,7 +41,7 @@ class LBFMHomeController: UIViewController {
         
         // 单独设置titleView的frame
         navigationItem.titleView = pageViewManager.titleView
-        pageViewManager.titleView.frame = CGRect(x: 0, y: 0, width: 280, height: 44)
+        pageViewManager.titleView.frame = CGRect(x: 0, y: 0, width: LBFMScreenWidth - 160, height: 44)
         let rightBarButtonItem1:UIBarButtonItem = UIBarButtonItem.init(customView: rightBarButton1)
         let rightBarButtonItem2:UIBarButtonItem = UIBarButtonItem.init(customView: rightBarButton2)
         

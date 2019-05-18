@@ -48,8 +48,8 @@ class LBFMMineController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        super.wr_viewWillAppear(animated)
-//        self.headerView.setAnimationViewAnimation()
+        super.wr_viewWillAppear(animated)
+        self.headerView.setAnimationViewAnimation()
     }
     
     // - 导航栏左边按钮

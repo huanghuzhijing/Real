@@ -9,7 +9,7 @@
 import UIKit
 
 class LBFMPlayController: UIViewController {
-
+    var isFirstPlay = true
     // 外部传值请求接口
     private var albumId :Int = 0
     private var trackUid:Int = 0
@@ -27,7 +27,10 @@ class LBFMPlayController: UIViewController {
     private let LBFMPlayCommentCellID     = "LBFMPlayCommentCell"
     private let LBFMPlayAnchorCellID      = "LBFMPlayAnchorCell"
     private let LBFMPlayCircleCellID      = "LBFMPlayCircleCell"
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        MusicTool.sharedTools.displayLink?.invalidate()
+        MusicTool.sharedTools.displayLink = nil
+    }
     private lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         let collection = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
@@ -144,7 +147,11 @@ extension LBFMPlayController : UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell:LBFMPlayCell = collectionView.dequeueReusableCell(withReuseIdentifier: LBFMPlayCellID, for: indexPath) as! LBFMPlayCell
+//            cell.isFirstPlay = isFirstPlay
             cell.playTrackInfo = viewModel.playTrackInfo
+            
+            
+            
             return cell
         }else if indexPath.section == 1{
             let cell:LBFMPlayAnchorCell = collectionView.dequeueReusableCell(withReuseIdentifier: LBFMPlayAnchorCellID, for: indexPath) as! LBFMPlayAnchorCell

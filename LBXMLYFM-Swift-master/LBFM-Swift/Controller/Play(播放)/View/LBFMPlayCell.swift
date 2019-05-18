@@ -8,19 +8,15 @@
 
 import UIKit
 import StreamingKit
+import MediaPlayer
 var currentProgress = Float(0)
 class LBFMPlayCell: UICollectionViewCell {
     var playUrl:String?
     var timer: Timer?
-    var displayLink: CADisplayLink?
     // 是否是第一次播放
-    private var isFirstPlay:Bool = true
+    var isFirstPlay:Bool = true
     // 音频播放器
-    private lazy var audioPlayer:STKAudioPlayer={
-        let audioPlayer = STKAudioPlayer()
-        
-        return audioPlayer
-    }()
+    var img = UIImage(named: "fj")
     // 标题
     private var titleLabel:UILabel = {
         let label = UILabel()
@@ -85,6 +81,7 @@ class LBFMPlayCell: UICollectionViewCell {
     private lazy var playBtn:UIButton = {
         let button = UIButton.init(type: UIButtonType.custom)
         button.setImage(UIImage(named: "toolbar_play_n_p_78x78_"), for: UIControlState.normal)
+        button.setImage(UIImage(named: "toolbar_pause_n_p_78x78_"), for: UIControlState.selected)
         button.addTarget(self, action: #selector(playBtn(button:)), for: UIControlEvents.touchUpInside)
         return button
     }()
@@ -114,21 +111,45 @@ class LBFMPlayCell: UICollectionViewCell {
         return button
     }()
     
+    private lazy var blurImageView:UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
+        /// 设置布局
+        
+        self.blurImageView = UIImageView.init(frame:  CGRect(x:0 , y: -200 , width: LBFMScreenWidth, height: self.bounds.height + 201))
+        
+        self.blurImageView.image = UIImage(named: "1")
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light)) as UIVisualEffectView
+        visualEffectView.frame = self.blurImageView.bounds
+        //添加毛玻璃效果层
+        self.blurImageView.addSubview(visualEffectView)
+        self.insertSubview(self.blurImageView, belowSubview: self)
         setUpUI()
-        audioPlayer.delegate = self
-        if currentProgress == 0{
-            removeTimer()
-            self.audioPlayer.stop()
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        self.becomeFirstResponder()
+        if currentProgress == 0 {
+            playBtn.isSelected = false
+            MusicTool.sharedTools.pause()
+            MusicTool.sharedTools.seek(toTime: Double(currentProgress * Float(MusicTool.sharedTools.duration())))
         }else{
+            isFirstPlay = false
             starTimer()
             slider.value = currentProgress
-            audioPlayer.seek(toTime: Double(currentProgress * Float(self.audioPlayer.duration)))
+            
             playBtn.isSelected = true
         }
     }
-    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    deinit {
+        if currentProgress == 0 {
+            removeTimer()
+        }
+    }
     
     func setUpUI(){
         // 标题
@@ -232,11 +253,26 @@ class LBFMPlayCell: UICollectionViewCell {
     
     var playTrackInfo:LBFMPlayTrackInfo?{
         didSet{
-            guard let model = playTrackInfo else {return}
-            self.titleLabel.text = model.title
-            self.imageView.kf.setImage(with: URL(string: model.coverLarge!))
-            self.totalTime.text = getMMSSFromSS(duration: model.duration)
-            self.playUrl = model.playUrl64
+            if let model = playTrackInfo{
+                self.titleLabel.text = model.title
+                self.totalTime.text = getMMSSFromSS(duration: model.duration)
+                self.playUrl = model.playUrl64
+                self.imageView.kf.setImage(with: URL(string: model.coverLarge ?? "http://fdfs.xmcdn.com/group59/M01/9B/9D/wKgLeFzbokLxpqoDAAIgpr_9v2g763.jpg"))
+                self.blurImageView.kf.setImage(with: URL(string: model.coverLarge ?? "http://fdfs.xmcdn.com/group59/M01/9B/9D/wKgLeFzbokLxpqoDAAIgpr_9v2g763.jpg"))
+                UserDF.setString(key: "title", value: model.title!)
+                UserDF.setInt(key: "duration", value: model.duration)
+                UserDF.setString(key: "playUrl64", value: model.playUrl64!)
+                UserDF.setString(key: "imageView", value: model.coverLarge ?? "http://fdfs.xmcdn.com/group59/M01/9B/9D/wKgLeFzbokLxpqoDAAIgpr_9v2g763.jpg")
+                
+            }else{
+                self.titleLabel.text = UserDF.getString(key: "title")
+                self.totalTime.text = getMMSSFromSS(duration: UserDF.getInt(key: "duration"))
+                self.playUrl = UserDF.getString(key: "playUrl64")
+                self.imageView.kf.setImage(with: URL(string: UserDF.getString(key: "imageView") ))
+                self.blurImageView.kf.setImage(with: URL(string: UserDF.getString(key: "imageView")))
+            }
+            img = imageView.image
+            
         }
     }
     
@@ -261,62 +297,126 @@ class LBFMPlayCell: UICollectionViewCell {
     @objc func playBtn(button:UIButton){
         button.isSelected = !button.isSelected
         if button.isSelected {
-            button.setImage(UIImage(named: "toolbar_pause_n_p_78x78_"), for: UIControlState.normal)
+            
             if isFirstPlay {
                 if let url = self.playUrl{
-                    self.audioPlayer.play(URL(string: url)!)
+                    MusicTool.sharedTools.play(urlString: url)
+                    UserDF.setString(key: "url", value: url)
                     starTimer()
                     isFirstPlay = false
                 }else{
                     
-                    self.audioPlayer.play(URL(string: "http://fdfs.xmcdn.com/group49/M0A/19/DA/wKgKl1vtT_fijTYLACWO1-PlGjM861.mp3")!)
+                    MusicTool.sharedTools.play(urlString:  UserDF.getString(key: "url"))
                     starTimer()
                     isFirstPlay = false
                 }
                 
             }else {
                 starTimer()
-                self.audioPlayer.resume()
+                MusicTool.sharedTools.resume()
             }
         }else{
-            button.setImage(UIImage(named: "toolbar_play_n_p_78x78_"), for: UIControlState.normal)
+            
             removeTimer()
-            self.audioPlayer.pause()
+            setInfoCenterCredentials(playbackState: 0)
+            MusicTool.sharedTools.pause()
         }
         
     }
-    
+
     func starTimer() {
-        displayLink = CADisplayLink(target: self, selector: #selector(updateCurrentLabel))
-        displayLink?.add(to: RunLoop.current, forMode: .commonModes)
+        MusicTool.sharedTools.displayLink = CADisplayLink(target: self, selector: #selector(updateCurrentLabel))
+        MusicTool.sharedTools.displayLink?.add(to: RunLoop.current, forMode: .commonModes)
     }
     
     func removeTimer() {
-        displayLink?.invalidate()
-        displayLink = nil
+        MusicTool.sharedTools.displayLink?.invalidate()
+        MusicTool.sharedTools.displayLink = nil
     }
 }
 
 extension LBFMPlayCell{
     @objc func setUpTimesView() {
-        let currentTime:Int = Int(self.audioPlayer.progress)
+        let currentTime:Int = Int(MusicTool.sharedTools.progress())
         self.currentTime.text = getMMSSFromSS(duration: currentTime)
-        let progress = Float(self.audioPlayer.progress / self.audioPlayer.duration)
+        let progress = Float(MusicTool.sharedTools.progress() / MusicTool.sharedTools.duration())
         slider.value = progress
     }
     @objc func updateCurrentLabel() {
-        let currentTime:Int = Int(self.audioPlayer.progress)
+        let currentTime:Int = Int(MusicTool.sharedTools.progress())
         self.currentTime.text = getMMSSFromSS(duration: currentTime)
-        let progress = Float(self.audioPlayer.progress / self.audioPlayer.duration)
+        let progress = Float(MusicTool.sharedTools.progress() / MusicTool.sharedTools.duration())
         slider.value = progress
         currentProgress = progress
+        self.setInfoCenterCredentials(playbackState: 1)
     }
     @objc func change(slider:UISlider) {
         print("slider.value = %d",slider.value)
-        audioPlayer.seek(toTime: Double(slider.value * Float(self.audioPlayer.duration)))
+        MusicTool.sharedTools.seek(toTime: Double(slider.value * Float(MusicTool.sharedTools.duration())))
     }
     
     @objc func sliderDragUp(sender: UISlider) {
         print("value:(sender.value)")
+    }
+    // 设置后台播放显示信息
+    func setInfoCenterCredentials(playbackState: Int) {
+        DispatchQueue.global().async {
+            let mpic = MPNowPlayingInfoCenter.default()
+            
+            //专辑封面
+            let mySize = CGSize(width: 400, height: 400)
+            var albumArt = NSObject()
+            if #available(iOS 10.0, *) {
+                albumArt = MPMediaItemArtwork(boundsSize:mySize) { sz in
+                    if let i = self.img{
+                        return i
+                    }else{
+                        return UIImage(named: "fj")!
+                    }
+                }
+            } else {
+                // Fallback on earlier versions
+            }
+            
+            //获取进度
+            let postion = Double(MusicTool.sharedTools.progress())
+            let duration = Double(MusicTool.sharedTools.duration())
+            
+            mpic.nowPlayingInfo = [MPMediaItemPropertyTitle: self.playTrackInfo?.title,
+                                   MPMediaItemPropertyArtist: self.playTrackInfo?.categoryName,
+                                   MPMediaItemPropertyArtwork: albumArt,
+                                   MPNowPlayingInfoPropertyElapsedPlaybackTime: postion,
+                                   MPMediaItemPropertyPlaybackDuration: duration,
+                                   MPNowPlayingInfoPropertyPlaybackRate: playbackState]
+        }
+    }
+
+    //后台操作
+    override func remoteControlReceived(with event: UIEvent?) {
+        guard let event = event else {
+            print("no event\n")
+            return
+        }
+        
+        if event.type == UIEventType.remoteControl {
+            switch event.subtype {
+            case .remoteControlTogglePlayPause:
+                print("暂停/播放")
+            case .remoteControlPreviousTrack:
+                print("上一首")
+            case .remoteControlNextTrack:
+                print("下一首")
+//            case .remoteControlPlay:
+//                print("播放")
+//                audioPlayer.resume()
+//            case .remoteControlPause:
+//                print("暂停")
+//                audioPlayer.pause()
+                //后台播放显示信息进度停止
+                setInfoCenterCredentials(playbackState: 0)
+            default:
+                break
+            }
+        }
     }
 }

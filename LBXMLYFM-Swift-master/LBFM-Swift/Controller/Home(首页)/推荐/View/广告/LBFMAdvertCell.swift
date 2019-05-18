@@ -44,7 +44,7 @@ class LBFMAdvertCell: UICollectionViewCell {
             make.bottom.equalToSuperview().offset(-60)
         }
         self.addSubview(self.titleLabel)
-        self.titleLabel.text = "那些事"
+        self.titleLabel.text = "携程旅游"
         self.titleLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
@@ -53,7 +53,7 @@ class LBFMAdvertCell: UICollectionViewCell {
         }
         
         self.addSubview(self.subLabel)
-        self.subLabel.text = "开年会发年终奖呀领导开年会发年终奖呀"
+        self.subLabel.text = "[广告]人生总有想看的风景"
         self.subLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)

@@ -9,7 +9,7 @@
 import UIKit
 import ESTabBarController_swift
 import SwiftMessages
-
+import AVFoundation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -23,9 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = tabbar
         self.window?.makeKeyAndVisible()
         
+        // 注册后台播放
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setActive(true)
+            try session.setCategory(AVAudioSessionCategoryPlayback)
+        } catch {
+            print(error)
+        }
         return true
     }
-
     
     /// 1.加载tabbar样式
     ///
@@ -45,7 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         tabBarController.didHijackHandler = {
             [weak tabBarController] tabbarController, viewController, index in
-            let vc = LBFMNavigationController.init(rootViewController: LBFMPlayController(albumId:albumId, trackUid:trackUid, uid:uid))
+            let pvc = LBFMPlayController(albumId:albumId, trackUid:trackUid, uid:uid)
+//            pvc.isFirstPlay = false
+            let vc = LBFMNavigationController.init(rootViewController: pvc)
+            
             tabBarController?.present(vc, animated: true, completion: nil)
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
 //                let warning = MessageView.viewFromNib(layout: .cardView)
@@ -90,6 +100,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     
-
 }
 

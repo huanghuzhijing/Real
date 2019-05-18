@@ -30,7 +30,7 @@ class LBFMMineMakeCell: UITableViewCell {
             titleLabel.textAlignment = .center
             titleLabel.text = titleArray[index]
             titleLabel.font = UIFont.systemFont(ofSize: 15)
-            if index == 1 {
+            if index == 0 {
                 titleLabel.textColor = UIColor.init(r: 213, g: 54, b: 13)
                 let waveView = LBFMCVLayerView(frame: CGRect(x: margin*CGFloat(index)*2+margin/2, y: 10, width: margin, height: margin))
                 waveView.center = button.center

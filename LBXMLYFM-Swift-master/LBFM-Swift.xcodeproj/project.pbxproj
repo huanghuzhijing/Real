@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2922A233228C4D0D008FE62C /* MusicTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2922A232228C4D0D008FE62C /* MusicTool.swift */; };
+		292C45F7228D3AF7004B7165 /* MyAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292C45F5228D3AF7004B7165 /* MyAlertViewController.swift */; };
+		292C45F8228D3AF7004B7165 /* MyAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 292C45F6228D3AF7004B7165 /* MyAlertViewController.xib */; };
 		3A14006A2202D61D00C98D59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1400682202D61D00C98D59 /* Main.storyboard */; };
 		3A14006C2202D62000C98D59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A14006B2202D62000C98D59 /* Assets.xcassets */; };
 		3A14006F2202D62000C98D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A14006D2202D62000C98D59 /* LaunchScreen.storyboard */; };
@@ -182,6 +185,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2922A232228C4D0D008FE62C /* MusicTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTool.swift; sourceTree = "<group>"; };
+		292C45F5228D3AF7004B7165 /* MyAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlertViewController.swift; sourceTree = "<group>"; };
+		292C45F6228D3AF7004B7165 /* MyAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyAlertViewController.xib; sourceTree = "<group>"; };
 		2CFEE505BF3F94F8DFD531F9 /* Pods-LBFM-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBFM-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-LBFM-Swift/Pods-LBFM-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		3A1400612202D61D00C98D59 /* LBFM-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LBFM-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A1400692202D61D00C98D59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -389,6 +395,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2922A231228C4CF0008FE62C /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				2922A232228C4D0D008FE62C /* MusicTool.swift */,
+				292C45F5228D3AF7004B7165 /* MyAlertViewController.swift */,
+				292C45F6228D3AF7004B7165 /* MyAlertViewController.xib */,
+			);
+			path = tools;
+			sourceTree = "<group>";
+		};
 		3A1400582202D61D00C98D59 = {
 			isa = PBXGroup;
 			children = (
@@ -410,6 +426,7 @@
 		3A1400632202D61D00C98D59 /* LBFM-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				2922A231228C4CF0008FE62C /* tools */,
 				3A9533792204207A00E4DC70 /* AppDelegate */,
 				3A9533312203F11D00E4DC70 /* Common */,
 				3A9533322203F11D00E4DC70 /* Controller */,
@@ -1716,6 +1733,11 @@
 				TargetAttributes = {
 					3A1400602202D61D00C98D59 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1749,6 +1771,7 @@
 				3A40DAD3222000D500A4C734 /* listenRecommend.json in Resources */,
 				3A14006C2202D62000C98D59 /* Assets.xcassets in Resources */,
 				3A14006A2202D61D00C98D59 /* Main.storyboard in Resources */,
+				292C45F8228D3AF7004B7165 /* MyAlertViewController.xib in Resources */,
 				3A40DAD5222000D500A4C734 /* listenSubscibe.json in Resources */,
 				3A9CF5C8222774AF0093B36A /* FindAttention.json in Resources */,
 			);
@@ -1884,6 +1907,7 @@
 				3ADC9B5F2232159A00CAF62B /* LBFMPlayViewModel.swift in Sources */,
 				3ACA6E192223613D00202E98 /* LBFMListenSubscibeViewModel.swift in Sources */,
 				3AD3A9AF222A399600367138 /* LBFMFindRecommendPicCell.swift in Sources */,
+				2922A233228C4D0D008FE62C /* MusicTool.swift in Sources */,
 				3ACA6E6C2223C97700202E98 /* LBFMHomeLiveViewModel.swift in Sources */,
 				3AEAA628221106E400B46FA7 /* LBFMRecommendAPI.swift in Sources */,
 				3A9CF5CE222774F70093B36A /* LBFMFindAttentionController.swift in Sources */,
@@ -1896,6 +1920,7 @@
 				3A9CF56A2226241A0093B36A /* LBFMRadioFooterView.swift in Sources */,
 				3ADC9B5122320D0000CAF62B /* LBFMClassifySubModuleType17Cell.swift in Sources */,
 				3ACA6E352223932D00202E98 /* LBFMHomeClassifyModel.swift in Sources */,
+				292C45F7228D3AF7004B7165 /* MyAlertViewController.swift in Sources */,
 				3ACA6E3D2223961400202E98 /* LBFMHomeClassifyCell.swift in Sources */,
 				3ADC9B612232161400CAF62B /* LBFMPlayAPI.swift in Sources */,
 				3ADC9B692232183600CAF62B /* LBFMPlayHeaderView.swift in Sources */,
@@ -2140,7 +2165,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PS8WDEVF89;
+				DEVELOPMENT_TEAM = 2Q7FD6Z29Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LBFM-Swift/Controller/Home(首页)/推荐",
@@ -2151,7 +2176,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xmlycxt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xmlycx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2165,7 +2190,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PS8WDEVF89;
+				DEVELOPMENT_TEAM = 2Q7FD6Z29Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LBFM-Swift/Controller/Home(首页)/推荐",
@@ -2176,7 +2201,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xmlycxt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xmlycx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

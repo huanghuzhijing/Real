@@ -12,7 +12,7 @@ typealias LBFMHeaderMoreBtnClick = () ->Void
 
 class LBFMRecommendHeaderView: UICollectionReusableView {
     var headerMoreBtnClick : LBFMHeaderMoreBtnClick?
-
+    
     // 标题
     private var titleLabel:UILabel = {
        let titleLabel = UILabel()
@@ -45,8 +45,44 @@ class LBFMRecommendHeaderView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupHeaderView()
+        shapeLayer = CAShapeLayer()
+        self.layer.mask = shapeLayer
+        self.backgroundColor = UIColor.white
+    }
+    let cornerRadius:CGFloat = 15.0
+    var shapeLayer:CAShapeLayer!
+    //覆盖frame，自动添加边距
+    override var frame: CGRect {
+        get {
+            return super.frame
+        }
+        set {
+            var frame = newValue
+            frame.origin.x += 15
+            frame.origin.y += 10
+            frame.size.width -= 2 * 15
+            frame.size.height -= 10
+            super.frame = frame
+        }
     }
     
+    //子视图布局
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        //调整文字标签位置
+//        self.titleLabel.frame = CGRect(x: 0, y:0, width:self.frame.width,
+//                                       height:self.frame.height)
+        
+        //调整遮罩层路径
+        let bezierPath = UIBezierPath(roundedRect: bounds,
+                                      byRoundingCorners: [.topLeft,.topRight],
+                                      cornerRadii: CGSize(width: cornerRadius,
+                                                          height: cornerRadius))
+        shapeLayer.path = bezierPath.cgPath
+    }
+    
+   
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
