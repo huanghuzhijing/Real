@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SmallVideoViewController" customModule="RxCocoaVideo" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="vOh-bI-KaG" id="1Qi-Ei-RkJ"/>
+                <outlet property="titleButton" destination="KxC-Bl-CNc" id="XFO-V9-9N7"/>
+                <outlet property="titleTop" destination="H8f-ie-wse" id="AAu-X6-IdL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vOh-bI-KaG">
+                    <rect key="frame" x="0.0" y="40" width="320" height="528"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="c5Q-9S-yP3">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="0K1-2b-ZhR"/>
+                        <outlet property="delegate" destination="-1" id="tDq-Ng-aVZ"/>
+                    </connections>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="juX-pt-Xow" userLabel="导航栏">
+                    <rect key="frame" x="0.0" y="40" width="320" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fI2-gZ-DL8">
+                            <rect key="frame" x="15" y="0.0" width="24" height="44"/>
+                            <state key="normal" image="ImgPic_close_24x24_"/>
+                            <connections>
+                                <action selector="closeButtonClicked:" destination="-1" eventType="touchUpInside" id="LlE-iO-dd5"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KxC-Bl-CNc">
+                            <rect key="frame" x="110" y="8" width="100" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" image="douyin_logo_new_100x28_"/>
+                            <connections>
+                                <action selector="titleButtonClicked:" destination="-1" eventType="touchUpInside" id="E2e-wO-IKQ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sKV-wW-3ff">
+                            <rect key="frame" x="283" y="0.0" width="22" height="44"/>
+                            <state key="normal" image="new_morewhite_titlebar_22x22_"/>
+                            <connections>
+                                <action selector="moreButtonClicked:" destination="-1" eventType="touchUpInside" id="sgf-KZ-Rgs"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="sKV-wW-3ff" firstAttribute="top" secondItem="juX-pt-Xow" secondAttribute="top" id="2vQ-Yg-vVa"/>
+                        <constraint firstAttribute="trailing" secondItem="sKV-wW-3ff" secondAttribute="trailing" constant="15" id="6K3-UZ-h91"/>
+                        <constraint firstAttribute="bottom" secondItem="sKV-wW-3ff" secondAttribute="bottom" id="6PC-Ix-6BN"/>
+                        <constraint firstAttribute="bottom" secondItem="fI2-gZ-DL8" secondAttribute="bottom" id="Hsc-k3-8O0"/>
+                        <constraint firstAttribute="height" constant="44" id="PdJ-vN-7Jf"/>
+                        <constraint firstItem="fI2-gZ-DL8" firstAttribute="top" secondItem="juX-pt-Xow" secondAttribute="top" id="ZDn-Fn-0Qj"/>
+                        <constraint firstItem="KxC-Bl-CNc" firstAttribute="centerY" secondItem="juX-pt-Xow" secondAttribute="centerY" id="bQy-EH-YwO"/>
+                        <constraint firstItem="fI2-gZ-DL8" firstAttribute="leading" secondItem="juX-pt-Xow" secondAttribute="leading" constant="15" id="rm4-h3-hN7"/>
+                        <constraint firstItem="KxC-Bl-CNc" firstAttribute="centerX" secondItem="juX-pt-Xow" secondAttribute="centerX" id="vPv-l9-eML"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="juX-pt-Xow" secondAttribute="trailing" id="7di-Vb-pTd"/>
+                <constraint firstItem="juX-pt-Xow" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="H8f-ie-wse"/>
+                <constraint firstItem="vOh-bI-KaG" firstAttribute="top" secondItem="juX-pt-Xow" secondAttribute="top" id="Hc4-iq-fY2"/>
+                <constraint firstAttribute="bottom" secondItem="vOh-bI-KaG" secondAttribute="bottom" id="Nmv-x8-5BB"/>
+                <constraint firstAttribute="trailing" secondItem="vOh-bI-KaG" secondAttribute="trailing" id="fPn-4d-U8c"/>
+                <constraint firstItem="vOh-bI-KaG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hWm-YV-MCF"/>
+                <constraint firstItem="juX-pt-Xow" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mf6-wN-m7h"/>
+            </constraints>
+            <point key="canvasLocation" x="34" y="119"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ImgPic_close_24x24_" width="24" height="24"/>
+        <image name="douyin_logo_new_100x28_" width="100" height="28"/>
+        <image name="new_morewhite_titlebar_22x22_" width="22" height="22"/>
+    </resources>
+</document>

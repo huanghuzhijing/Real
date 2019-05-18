@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PreviewVCViewController" customModule="RxCocoaVideo" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="rPB-qE-3mN" id="sSk-qs-ZMO"/>
+                <outlet property="indexLabel" destination="YOT-8Y-8sr" id="LWl-7E-hql"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="0Id-R1-09f"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOT-8Y-8sr">
+                    <rect key="frame" x="15" y="622" width="26" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nyg-qj-yhl">
+                    <rect key="frame" x="310" y="622" width="50" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="kva-LK-LcB"/>
+                        <constraint firstAttribute="height" constant="30" id="n1I-Sw-0y4"/>
+                    </constraints>
+                    <state key="normal" title="SAVE"/>
+                    <connections>
+                        <action selector="saveButtonClicked:" destination="-1" eventType="touchUpInside" id="84Y-02-21h"/>
+                    </connections>
+                </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rPB-qE-3mN">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qIo-74-ppu">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="WUR-Sh-Knn"/>
+                        <outlet property="delegate" destination="-1" id="2dp-7e-cer"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="rPB-qE-3mN" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="8Te-3x-lgp"/>
+                <constraint firstItem="rPB-qE-3mN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BED-c3-eO9"/>
+                <constraint firstItem="rPB-qE-3mN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="KaH-kK-BEa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Nyg-qj-yhl" secondAttribute="trailing" constant="15" id="Uh6-wc-ctd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YOT-8Y-8sr" secondAttribute="bottom" constant="15" id="aUZ-d9-3Hv"/>
+                <constraint firstItem="YOT-8Y-8sr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="gXC-dU-HAU"/>
+                <constraint firstItem="Nyg-qj-yhl" firstAttribute="centerY" secondItem="YOT-8Y-8sr" secondAttribute="centerY" id="n2m-JB-7fU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Nyg-qj-yhl" secondAttribute="bottom" constant="15" id="pEx-AZ-sZA"/>
+                <constraint firstItem="rPB-qE-3mN" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="yfA-cN-gLD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="25.5" y="51.5"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,26 @@
+# Uncomment the next line to define a global platform for your project
+ platform :ios, '9.0'
+
+target 'RxCocoaVideo' do
+  # Comment the next line if you
+ use_frameworks!
+inhibit_all_warnings!
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
+  pod 'Kingfisher'
+  pod 'HandyJSON', '~> 5.0.0-beta.1'
+  pod 'IBAnimatable'
+  pod 'SwiftTheme'
+  pod 'RxCocoa'
+  pod 'SQLite.swift'
+  pod 'SVProgressHUD'
+  pod 'BMPlayer'
+  pod 'MJRefresh'
+  pod 'SGPagingView'
+  pod 'FDFullscreenPopGesture'
+  # pod 'Texture'
+  pod 'lottie-ios'
+
+end
+
+

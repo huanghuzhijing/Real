@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="oLW-vK-JXo">
+            <rect key="frame" x="0.0" y="0.0" width="164" height="105"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="164" height="105"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VE3-JY-D5e">
+                        <rect key="frame" x="0.0" y="0.0" width="164" height="105"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8BA-xg-3my">
+                        <rect key="frame" x="67" y="37" width="30" height="30"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GIF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUV-Dw-a32">
+                        <rect key="frame" x="126" y="77" width="28" height="18"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="28" id="5wE-LP-c8s"/>
+                            <constraint firstAttribute="height" constant="18" id="fiO-5Z-iOQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="NUV-Dw-a32" secondAttribute="bottom" constant="10" id="Qfg-dY-w9n"/>
+                <constraint firstItem="8BA-xg-3my" firstAttribute="centerY" secondItem="oLW-vK-JXo" secondAttribute="centerY" id="ZVo-6b-cor"/>
+                <constraint firstItem="8BA-xg-3my" firstAttribute="centerX" secondItem="oLW-vK-JXo" secondAttribute="centerX" id="c83-cY-oqY"/>
+                <constraint firstAttribute="trailing" secondItem="VE3-JY-D5e" secondAttribute="trailing" id="kSB-gx-tx7"/>
+                <constraint firstItem="VE3-JY-D5e" firstAttribute="top" secondItem="oLW-vK-JXo" secondAttribute="top" id="n79-OG-eEc"/>
+                <constraint firstItem="VE3-JY-D5e" firstAttribute="leading" secondItem="oLW-vK-JXo" secondAttribute="leading" id="nWv-bC-zEc"/>
+                <constraint firstAttribute="trailing" secondItem="NUV-Dw-a32" secondAttribute="trailing" constant="10" id="p3e-tY-b0n"/>
+                <constraint firstAttribute="bottom" secondItem="VE3-JY-D5e" secondAttribute="bottom" id="qpP-Jv-cte"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="OAb-tk-mzS"/>
+            <connections>
+                <outlet property="gifLabel" destination="NUV-Dw-a32" id="scg-f0-0AJ"/>
+                <outlet property="iconButton" destination="8BA-xg-3my" id="STt-AT-38B"/>
+                <outlet property="thumbImageView" destination="VE3-JY-D5e" id="357-0y-N0J"/>
+            </connections>
+            <point key="canvasLocation" x="277" y="-15"/>
+        </collectionViewCell>
+    </objects>
+</document>
