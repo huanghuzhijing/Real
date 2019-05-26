@@ -28,7 +28,7 @@ class HomeNavigationView: UIView, NibLoadable {
         searchButton.theme_backgroundColor = "colors.cellBackgroundColor"
         searchButton.theme_setTitleColor("colors.grayColor150", forState: .normal)
         searchButton.setImage(UIImage(named: "search_small_16x16_"), for: [.normal, .highlighted])
-        iconButton.set(image: UIImage(named: iconStr), title: temperature, titlePosition: .bottom,
+        iconButton.set(image: UIImage(named: "home_camera"), title: "AR相机", titlePosition: .bottom,
                      additionalSpacing: -5, state: .normal)
 //        iconButton.titleEdgeInsets = UIEdgeInsetsMake(-5, 0, 0, 0)
         avatarButton.theme_setImage("images.home_no_login_head", forState: .normal)
@@ -57,6 +57,9 @@ class HomeNavigationView: UIView, NibLoadable {
        didSelectAvatarButton?()
     }
     
+    @IBAction func openAR(_ sender: Any) {
+        didSelectSearchButton?()
+    }
     /// 搜索按钮点击
     @IBAction func searchButtonClicked(_ sender: AnimatableButton) {
         didSelectSearchButton?()

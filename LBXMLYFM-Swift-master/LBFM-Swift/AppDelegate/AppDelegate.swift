@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mineNav = LBFMNavigationController.init(rootViewController: mine)
         home.title = "首页"
         listen.title = "我听"
-        play.title = "播放"
+        play.title = ""
         find.title = "发现"
         mine.title = "我的"
         

@@ -61,7 +61,6 @@ extension HomeViewController {
     private func setupUI() {
         let url = ""
         if(redColor == nil ){  redColor = navigationBar.backgroundColor!}
-         print(redColor?.description,"redColor?.description")
         view.theme_backgroundColor = "colors.cellBackgroundColor"
         // 设置自定义导航栏
         navigationItem.titleView = navigationBar
@@ -119,7 +118,7 @@ extension HomeViewController {
     private func clickAction() {
         // 搜索按钮点击
         navigationBar.didSelectSearchButton = {
-            
+           self.present(SunRevolutionViewController(), animated: true, completion: nil)
         }
         // 头像按钮点击
         navigationBar.didSelectAvatarButton = { [weak self] in

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,16 +20,19 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feK-0T-7Iy">
-                            <rect key="frame" x="5" y="7" width="30" height="30"/>
+                            <rect key="frame" x="0.0" y="2" width="40" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="UGS-Qe-WJb"/>
-                                <constraint firstAttribute="width" constant="30" id="a02-TQ-Hos"/>
+                                <constraint firstAttribute="width" constant="40" id="a02-TQ-Hos"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
                             <state key="normal" image="home_no_login_head"/>
+                            <connections>
+                                <action selector="openAR:" destination="iN0-l3-epB" eventType="touchUpInside" id="8iH-KU-lXJ"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNQ-8s-CLP" customClass="AnimatableButton" customModule="IBAnimatable">
-                            <rect key="frame" x="45" y="7" width="285" height="30"/>
+                            <rect key="frame" x="50" y="7" width="280" height="30"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="olv-eW-Fds"/>
@@ -63,12 +66,11 @@
                         <constraint firstAttribute="trailing" secondItem="0Gk-xZ-yby" secondAttribute="trailing" constant="5" id="AAB-10-Obs"/>
                         <constraint firstItem="0Gk-xZ-yby" firstAttribute="leading" secondItem="yNQ-8s-CLP" secondAttribute="trailing" constant="10" id="ADZ-H5-q0r"/>
                         <constraint firstItem="yNQ-8s-CLP" firstAttribute="centerY" secondItem="EeF-fb-9Bv" secondAttribute="centerY" id="Fth-SS-Egk"/>
-                        <constraint firstItem="feK-0T-7Iy" firstAttribute="leading" secondItem="EeF-fb-9Bv" secondAttribute="leading" constant="5" id="MO7-pa-T80"/>
-                        <constraint firstItem="feK-0T-7Iy" firstAttribute="centerY" secondItem="EeF-fb-9Bv" secondAttribute="centerY" id="bpr-Ug-oZg"/>
+                        <constraint firstItem="feK-0T-7Iy" firstAttribute="leading" secondItem="EeF-fb-9Bv" secondAttribute="leading" id="MO7-pa-T80"/>
+                        <constraint firstItem="feK-0T-7Iy" firstAttribute="centerY" secondItem="EeF-fb-9Bv" secondAttribute="centerY" constant="-5" id="bpr-Ug-oZg"/>
                         <constraint firstItem="0Gk-xZ-yby" firstAttribute="centerY" secondItem="EeF-fb-9Bv" secondAttribute="centerY" id="jAI-L1-YJb"/>
                         <constraint firstAttribute="height" constant="44" id="jsy-6G-oEm"/>
                         <constraint firstItem="yNQ-8s-CLP" firstAttribute="leading" secondItem="feK-0T-7Iy" secondAttribute="trailing" constant="10" id="m6Y-YE-5eu"/>
-                        <constraint firstItem="feK-0T-7Iy" firstAttribute="centerY" secondItem="EeF-fb-9Bv" secondAttribute="centerY" id="ynP-lL-hd1"/>
                     </constraints>
                 </view>
             </subviews>

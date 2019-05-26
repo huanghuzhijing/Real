@@ -147,6 +147,8 @@
 		293794D82111EA9A00070FD2 /* PreviewVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293794D62111EA9A00070FD2 /* PreviewVCViewController.swift */; };
 		293794D92111EA9A00070FD2 /* PreviewVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293794D72111EA9A00070FD2 /* PreviewVCViewController.xib */; };
 		29420EEF2110395800E190BC /* WeitoutiaoCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29420EEE2110395800E190BC /* WeitoutiaoCell1.xib */; };
+		294DAC44229ACB850078A624 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 294DAC43229ACB850078A624 /* art.scnassets */; };
+		294DAC46229ACBFD0078A624 /* SunRevolutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294DAC45229ACBFD0078A624 /* SunRevolutionViewController.swift */; };
 		2979420E20F7AA96003016A2 /* SmallVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979420D20F7AA96003016A2 /* SmallVideoCell.swift */; };
 		2979421020F7AAD3003016A2 /* SmallVideoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979420F20F7AAD3003016A2 /* SmallVideoLayout.swift */; };
 		2979421220F7AAF8003016A2 /* SmallVideoPlayerCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979421120F7AAF8003016A2 /* SmallVideoPlayerCustomView.swift */; };
@@ -334,6 +336,8 @@
 		293794D62111EA9A00070FD2 /* PreviewVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewVCViewController.swift; sourceTree = "<group>"; };
 		293794D72111EA9A00070FD2 /* PreviewVCViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewVCViewController.xib; sourceTree = "<group>"; };
 		29420EEE2110395800E190BC /* WeitoutiaoCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeitoutiaoCell1.xib; path = "../../../../../../../Downloads/TodayNews-master/News/News/Classes/Weitoutiao/View/WeitoutiaoCell1.xib"; sourceTree = "<group>"; };
+		294DAC43229ACB850078A624 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		294DAC45229ACBFD0078A624 /* SunRevolutionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunRevolutionViewController.swift; sourceTree = "<group>"; };
 		2979420D20F7AA96003016A2 /* SmallVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallVideoCell.swift; sourceTree = "<group>"; };
 		2979420F20F7AAD3003016A2 /* SmallVideoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallVideoLayout.swift; sourceTree = "<group>"; };
 		2979421120F7AAF8003016A2 /* SmallVideoPlayerCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallVideoPlayerCustomView.swift; sourceTree = "<group>"; };
@@ -441,6 +445,7 @@
 				2935D40C20F6365900446304 /* Main.storyboard */,
 				2935D40F20F6366500446304 /* Assets.xcassets */,
 				29D5BAEB20F887E10080C616 /* Info.plist */,
+				294DAC43229ACB850078A624 /* art.scnassets */,
 			);
 			path = RxCocoaVideo;
 			sourceTree = "<group>";
@@ -568,6 +573,7 @@
 				2935D45920F63A2000446304 /* NewsDetailImageCommentController.storyboard */,
 				2935D45A20F63A2000446304 /* NewsDetailImageCommentController.swift */,
 				2935D45B20F63A2000446304 /* NewsDetailImageController.storyboard */,
+				294DAC45229ACBFD0078A624 /* SunRevolutionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -924,6 +930,7 @@
 				2935D4CD20F63A2000446304 /* RelatedVideoCell.xib in Resources */,
 				2935D51120F63A2000446304 /* DongtaiCollectionView.xib in Resources */,
 				2935D50D20F63A2000446304 /* UserDetailBottomPopController.storyboard in Resources */,
+				294DAC44229ACB850078A624 /* art.scnassets in Resources */,
 				2935D53320F63A2000446304 /* UserDetailHeaderView2.xib in Resources */,
 				293119DA20F7284D00E6F573 /* SmallVideoViewController.xib in Resources */,
 				2935D4F120F63A2000446304 /* activity_main_mahjong_start_guide.json in Resources */,
@@ -1103,6 +1110,7 @@
 				2935D4DF20F63A2000446304 /* HomeNavigationView.swift in Sources */,
 				2935D4EC20F63A2000446304 /* SVProgressHUD+Extension.swift in Sources */,
 				2935D50E20F63A2000446304 /* UserDetailViewController.swift in Sources */,
+				294DAC46229ACBFD0078A624 /* SunRevolutionViewController.swift in Sources */,
 				2935D51820F63A2000446304 /* DongtaiNavigationBar.swift in Sources */,
 				2935D4C720F63A2000446304 /* TextLinkViewController.swift in Sources */,
 				2935D4C220F63A2000446304 /* LatestNewsController.swift in Sources */,
